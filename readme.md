@@ -111,7 +111,5 @@ The project is divided into three main layers:
 This project is licensed under the GNU General Public License (GNU GPL).
 
 ## Authors & Developers
-
-- **Teacher:** Miguel Grimm <miguelgrimm@gmail.com>
-- **Students:** Grupo do Júlio
+    Matheus s Uchoa
 
