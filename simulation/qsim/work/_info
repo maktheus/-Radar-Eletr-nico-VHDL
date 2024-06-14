@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Aluno\Desktop\radar\simulation\qsim
+vradar
+Z1 !s100 A^`zziO1ENXOUJPD?;kPe1
+Z2 IkAFVHWAP]_RLdBF3l5kU`1
+Z3 VeDd[z?8KB;E6kN>T6IIl@0
+Z4 dC:\Users\Aluno\Desktop\radar\simulation\qsim
+Z5 w1717777026
+Z6 8radar.vo
+Z7 Fradar.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|radar.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1717777027.192000
+Z12 !s107 radar.vo|
+!s101 -O0
+vradar_vlg_check_tst
+!i10b 1
+Z13 !s100 CzZmnQ28Do6]MXlcCT4[k0
+Z14 IXBEie;HLFh<jG=Mg7]L5Y0
+Z15 VZXC>zWl]:eG7l0YfMLbl=0
+R4
+Z16 w1717777025
+Z17 8Waveform_teste.vwf.vt
+Z18 FWaveform_teste.vwf.vt
+L0 63
+R8
+r1
+!s85 0
+31
+Z19 !s108 1717777028.330000
+Z20 !s107 Waveform_teste.vwf.vt|
+Z21 !s90 -work|work|Waveform_teste.vwf.vt|
+!s101 -O0
+R10
+vradar_vlg_sample_tst
+!i10b 1
+Z22 !s100 GMkbgD=>DbRD`Q1mo235l0
+Z23 I2SbQf36DgG?l;NYeG[Oci2
+Z24 V=]BB>?>coBH2lYeMDl[el0
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vradar_vlg_vec_tst
+!i10b 1
+!s100 :S34UXh@IVHAESQ2;KA011
+IAcD<=i]Y`EE2iABKodZI>3
+Z25 V>68jlk9NQ[HZR1U?JC>Vg2
+R4
+R16
+R17
+R18
+Z26 L0 542
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10

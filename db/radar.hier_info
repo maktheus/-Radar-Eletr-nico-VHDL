@@ -1,0 +1,202 @@
+|radar
+error <= rlc_microservice:inst.error
+enable => rlc_microservice:inst.enable
+enable => dsf_compare:inst3.enable
+enable => dsf_datareg:inst2.enable
+enable => dsf_upcounter:inst11.enable
+enable => dsf_integer_constant:inst6.enable
+enable => dsf_compare:inst4.enable
+enable => dsf_integer_constant1:inst5.enable
+areset => rlc_microservice:inst.areset
+start => rlc_microservice:inst.start
+clk => rlc_microservice:inst.clk
+clk => dsf_datareg:inst2.clk
+clk => dsf_upcounter:inst11.clk
+ledred <= dsf_compare:inst3.gtout
+ledblue <= inst12.DB_MAX_OUTPUT_PORT_TYPE
+ledgreen <= dsf_compare:inst4.ltout
+reset_o <= rlc_microservice:inst.reset_o
+windows_o <= rlc_microservice:inst.window_o
+store_o <= rlc_microservice:inst.store_o
+q_cnt[0] <= dsf_upcounter:inst11.q[0]
+q_cnt[1] <= dsf_upcounter:inst11.q[1]
+q_cnt[2] <= dsf_upcounter:inst11.q[2]
+q_cnt[3] <= dsf_upcounter:inst11.q[3]
+q_reg[0] <= dsf_datareg:inst2.q[0]
+q_reg[1] <= dsf_datareg:inst2.q[1]
+q_reg[2] <= dsf_datareg:inst2.q[2]
+q_reg[3] <= dsf_datareg:inst2.q[3]
+state[0] <= rlc_microservice:inst.state[0]
+state[1] <= rlc_microservice:inst.state[1]
+state[2] <= rlc_microservice:inst.state[2]
+
+
+|radar|rlc_microservice:inst
+enable => check_error.IN0
+enable => reset_o$latch.LATCH_ENABLE
+enable => window_o$latch.LATCH_ENABLE
+enable => store_o$latch.LATCH_ENABLE
+enable => current.noise_s.OUTPUTSELECT
+enable => current.error_s.OUTPUTSELECT
+enable => current.store_s.OUTPUTSELECT
+enable => current.window_s.OUTPUTSELECT
+enable => current.reset_s.OUTPUTSELECT
+enable => current.rst_in_s.OUTPUTSELECT
+enable => current.wait4start_s.OUTPUTSELECT
+areset => nx_out.OUTPUTSELECT
+areset => nx_out.OUTPUTSELECT
+areset => nx_out.OUTPUTSELECT
+areset => check_error.IN1
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+start => nx_state.OUTPUTSELECT
+clk => current~1.DATAIN
+reset_o <= reset_o$latch.DB_MAX_OUTPUT_PORT_TYPE
+window_o <= window_o$latch.DB_MAX_OUTPUT_PORT_TYPE
+store_o <= store_o$latch.DB_MAX_OUTPUT_PORT_TYPE
+error <= error$latch.DB_MAX_OUTPUT_PORT_TYPE
+state[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+state[1] <= state.DB_MAX_OUTPUT_PORT_TYPE
+state[2] <= state.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|radar|dsf_compare:inst3
+enable => gleout.OUTPUTSELECT
+enable => gleout.OUTPUTSELECT
+enable => gleout.OUTPUTSELECT
+dataa[0] => LessThan0.IN4
+dataa[0] => LessThan1.IN4
+dataa[1] => LessThan0.IN3
+dataa[1] => LessThan1.IN3
+dataa[2] => LessThan0.IN2
+dataa[2] => LessThan1.IN2
+dataa[3] => LessThan0.IN1
+dataa[3] => LessThan1.IN1
+datab[0] => LessThan0.IN8
+datab[0] => LessThan1.IN8
+datab[1] => LessThan0.IN7
+datab[1] => LessThan1.IN7
+datab[2] => LessThan0.IN6
+datab[2] => LessThan1.IN6
+datab[3] => LessThan0.IN5
+datab[3] => LessThan1.IN5
+gtin => code.OUTPUTSELECT
+gtin => code.OUTPUTSELECT
+gtin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+gtout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+ltout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+eqout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|radar|dsf_datareg:inst2
+enable => load_q.IN0
+enable => reg.OUTPUTSELECT
+enable => reg.OUTPUTSELECT
+enable => reg.OUTPUTSELECT
+enable => reg.OUTPUTSELECT
+areset => q[0]~reg0.ALOAD
+areset => q[1]~reg0.ALOAD
+areset => q[2]~reg0.ALOAD
+areset => q[3]~reg0.ALOAD
+load_en => load_q.IN1
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+data[0] => q[0]~reg0.DATAIN
+data[1] => q[1]~reg0.DATAIN
+data[2] => q[2]~reg0.DATAIN
+data[3] => q[3]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|radar|dsf_upcounter:inst11
+enable => inc_q.IN0
+areset => count_val[0].ACLR
+areset => count_val[1].ACLR
+areset => count_val[2].ACLR
+areset => count_val[3].ACLR
+count_en => inc_q.IN1
+clk => count_val[0].CLK
+clk => count_val[1].CLK
+clk => count_val[2].CLK
+clk => count_val[3].CLK
+q[0] <= count_val[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count_val[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count_val[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= count_val[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|radar|dsf_integer_constant:inst6
+enable => integer_constant[0].DATAIN
+enable => integer_constant[2].DATAIN
+integer_constant[0] <= enable.DB_MAX_OUTPUT_PORT_TYPE
+integer_constant[1] <= <GND>
+integer_constant[2] <= enable.DB_MAX_OUTPUT_PORT_TYPE
+integer_constant[3] <= <GND>
+
+
+|radar|dsf_compare:inst4
+enable => gleout.OUTPUTSELECT
+enable => gleout.OUTPUTSELECT
+enable => gleout.OUTPUTSELECT
+dataa[0] => LessThan0.IN4
+dataa[0] => LessThan1.IN4
+dataa[1] => LessThan0.IN3
+dataa[1] => LessThan1.IN3
+dataa[2] => LessThan0.IN2
+dataa[2] => LessThan1.IN2
+dataa[3] => LessThan0.IN1
+dataa[3] => LessThan1.IN1
+datab[0] => LessThan0.IN8
+datab[0] => LessThan1.IN8
+datab[1] => LessThan0.IN7
+datab[1] => LessThan1.IN7
+datab[2] => LessThan0.IN6
+datab[2] => LessThan1.IN6
+datab[3] => LessThan0.IN5
+datab[3] => LessThan1.IN5
+gtin => code.OUTPUTSELECT
+gtin => code.OUTPUTSELECT
+gtin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+ltin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+eqin => code.OUTPUTSELECT
+gtout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+ltout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+eqout <= gleout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|radar|dsf_integer_constant1:inst5
+enable => integer_constant[0].DATAIN
+enable => integer_constant[2].DATAIN
+enable => integer_constant[1].DATAIN
+integer_constant[0] <= enable.DB_MAX_OUTPUT_PORT_TYPE
+integer_constant[1] <= enable.DB_MAX_OUTPUT_PORT_TYPE
+integer_constant[2] <= enable.DB_MAX_OUTPUT_PORT_TYPE
+integer_constant[3] <= <GND>
+
+

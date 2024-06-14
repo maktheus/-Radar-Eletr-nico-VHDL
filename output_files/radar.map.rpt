@@ -1,0 +1,338 @@
+Analysis & Synthesis report for radar
+Fri Jun 07 12:14:48 2024
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |radar|rlc_microservice:inst|current
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Jun 07 12:14:48 2024      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; radar                                      ;
+; Top-level Entity Name              ; radar                                      ;
+; Family                             ; Cyclone IV GX                              ;
+; Total logic elements               ; 41                                         ;
+;     Total combinational functions  ; 40                                         ;
+;     Dedicated logic registers      ; 13                                         ;
+; Total registers                    ; 13                                         ;
+; Total pins                         ; 22                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total GXB Receiver Channel PCS     ; 0                                          ;
+; Total GXB Receiver Channel PMA     ; 0                                          ;
+; Total GXB Transmitter Channel PCS  ; 0                                          ;
+; Total GXB Transmitter Channel PMA  ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; radar              ; radar              ;
+; Family name                                                                ; Cyclone IV GX      ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                     ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                           ; Library ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------+---------+
+; rlc_microservice.vhd             ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/rlc_microservice.vhd      ;         ;
+; dsf_upcounter.vhd                ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_upcounter.vhd         ;         ;
+; dsf_std.vhd                      ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_std.vhd               ;         ;
+; dsf_integer_constant1.vhd        ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_integer_constant1.vhd ;         ;
+; dsf_integer_constant.vhd         ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_integer_constant.vhd  ;         ;
+; dsf_datareg.vhd                  ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_datareg.vhd           ;         ;
+; dsf_compare.vhd                  ; yes             ; User VHDL File                     ; C:/Users/Aluno/Desktop/radar/dsf_compare.vhd           ;         ;
+; radar.bdf                        ; yes             ; User Block Diagram/Schematic File  ; C:/Users/Aluno/Desktop/radar/radar.bdf                 ;         ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------+---------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++--------------------------+------------------+
+; Resource                 ; Usage            ;
++--------------------------+------------------+
+; I/O pins                 ; 22               ;
+; DSP block 9-bit elements ; 0                ;
+; Maximum fan-out node     ; enable~input     ;
+; Maximum fan-out          ; 21               ;
+; Total fan-out            ; 197              ;
+; Average fan-out          ; 2.03             ;
++--------------------------+------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name          ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+------------------------------+--------------+
+; |radar                     ; 40 (0)            ; 13 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 22   ; 0            ; |radar                       ; work         ;
+;    |dsf_compare:inst3|     ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |radar|dsf_compare:inst3     ; work         ;
+;    |dsf_compare:inst4|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |radar|dsf_compare:inst4     ; work         ;
+;    |dsf_datareg:inst2|     ; 16 (16)           ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |radar|dsf_datareg:inst2     ; work         ;
+;    |dsf_upcounter:inst11|  ; 6 (6)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |radar|dsf_upcounter:inst11  ; work         ;
+;    |rlc_microservice:inst| ; 13 (13)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |radar|rlc_microservice:inst ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |radar|rlc_microservice:inst|current                                                                                                      ;
++----------------------+-----------------+-----------------+-----------------+------------------+-----------------+----------------------+------------------+
+; Name                 ; current.noise_s ; current.error_s ; current.store_s ; current.window_s ; current.reset_s ; current.wait4start_s ; current.rst_in_s ;
++----------------------+-----------------+-----------------+-----------------+------------------+-----------------+----------------------+------------------+
+; current.rst_in_s     ; 0               ; 0               ; 0               ; 0                ; 0               ; 0                    ; 0                ;
+; current.wait4start_s ; 0               ; 0               ; 0               ; 0                ; 0               ; 1                    ; 1                ;
+; current.reset_s      ; 0               ; 0               ; 0               ; 0                ; 1               ; 0                    ; 1                ;
+; current.window_s     ; 0               ; 0               ; 0               ; 1                ; 0               ; 0                    ; 1                ;
+; current.store_s      ; 0               ; 0               ; 1               ; 0                ; 0               ; 0                    ; 1                ;
+; current.error_s      ; 0               ; 1               ; 0               ; 0                ; 0               ; 0                    ; 1                ;
+; current.noise_s      ; 1               ; 0               ; 0               ; 0                ; 0               ; 0                    ; 1                ;
++----------------------+-----------------+-----------------+-----------------+------------------+-----------------+----------------------+------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; rlc_microservice:inst|reset_o                      ; enable              ; yes                    ;
+; rlc_microservice:inst|window_o                     ; enable              ; yes                    ;
+; rlc_microservice:inst|store_o                      ; enable              ; yes                    ;
+; Number of user-specified and inferred latches = 3  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; rlc_microservice:inst|current.noise_s ; Stuck at GND due to stuck port data_in ;
+; rlc_microservice:inst|current.error_s ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 2 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 13    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 13    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 9     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Fri Jun 07 12:14:46 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off radar -c radar
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file rlc_microservice.vhd
+    Info (12022): Found design unit 1: rlc_microservice-rlc_microservice_a
+    Info (12023): Found entity 1: rlc_microservice
+Info (12021): Found 2 design units, including 1 entities, in source file dsf_upcounter.vhd
+    Info (12022): Found design unit 1: dsf_upcounter-upcounter_a
+    Info (12023): Found entity 1: dsf_upcounter
+Info (12021): Found 2 design units, including 0 entities, in source file dsf_std.vhd
+    Info (12022): Found design unit 1: dsf_std
+    Info (12022): Found design unit 2: dsf_std-body
+Info (12021): Found 2 design units, including 1 entities, in source file dsf_integer_constant1.vhd
+    Info (12022): Found design unit 1: dsf_integer_constant-dsf_integer_constant_a
+    Info (12023): Found entity 1: dsf_integer_constant1
+Info (12021): Found 2 design units, including 1 entities, in source file dsf_integer_constant.vhd
+    Info (12022): Found design unit 1: dsf_integer_constant1-dsf_integer_constant_a
+    Info (12023): Found entity 1: dsf_integer_constant
+Info (12021): Found 2 design units, including 1 entities, in source file dsf_datareg.vhd
+    Info (12022): Found design unit 1: dsf_datareg-datareg_a
+    Info (12023): Found entity 1: dsf_datareg
+Info (12021): Found 2 design units, including 1 entities, in source file dsf_compare.vhd
+    Info (12022): Found design unit 1: dsf_compare-compare_a
+    Info (12023): Found entity 1: dsf_compare
+Info (12021): Found 1 design units, including 1 entities, in source file radar.bdf
+    Info (12023): Found entity 1: radar
+Info (12127): Elaborating entity "radar" for the top level hierarchy
+Info (12128): Elaborating entity "rlc_microservice" for hierarchy "rlc_microservice:inst"
+Info (10041): Inferred latch for "error" at rlc_microservice.vhd(234)
+Info (10041): Inferred latch for "store_o" at rlc_microservice.vhd(306)
+Info (10041): Inferred latch for "window_o" at rlc_microservice.vhd(303)
+Info (10041): Inferred latch for "reset_o" at rlc_microservice.vhd(300)
+Info (12128): Elaborating entity "dsf_compare" for hierarchy "dsf_compare:inst3"
+Info (12128): Elaborating entity "dsf_datareg" for hierarchy "dsf_datareg:inst2"
+Info (12128): Elaborating entity "dsf_upcounter" for hierarchy "dsf_upcounter:inst11"
+Warning (10492): VHDL Process Statement warning at dsf_upcounter.vhd(139): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "dsf_integer_constant" for hierarchy "dsf_integer_constant:inst6"
+Info (12128): Elaborating entity "dsf_integer_constant1" for hierarchy "dsf_integer_constant1:inst5"
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "dsf_datareg:inst2|q[3]" is converted into an equivalent circuit using register "dsf_datareg:inst2|q[3]~_emulated" and latch "dsf_datareg:inst2|q[3]~1"
+    Warning (13310): Register "dsf_datareg:inst2|q[2]" is converted into an equivalent circuit using register "dsf_datareg:inst2|q[2]~_emulated" and latch "dsf_datareg:inst2|q[2]~5"
+    Warning (13310): Register "dsf_datareg:inst2|q[1]" is converted into an equivalent circuit using register "dsf_datareg:inst2|q[1]~_emulated" and latch "dsf_datareg:inst2|q[1]~9"
+    Warning (13310): Register "dsf_datareg:inst2|q[0]" is converted into an equivalent circuit using register "dsf_datareg:inst2|q[0]~_emulated" and latch "dsf_datareg:inst2|q[0]~13"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "error" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 63 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 18 output pins
+    Info (21061): Implemented 41 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4708 megabytes
+    Info: Processing ended: Fri Jun 07 12:14:48 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

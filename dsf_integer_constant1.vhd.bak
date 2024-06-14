@@ -1,0 +1,131 @@
+-- ############################################################################
+-- @copyright   Miguel Grimm <miguelgrimm@gmail>
+--
+-- @brief       Função digital de divisão de frequência.
+--
+-- @file        dsf_freqdivider.vhd
+-- @version     1.0
+-- @date        27 Julho 2020
+--
+-- @section     HARDWARES & SOFTWARES.
+--              +compiler     Quartus Web Edition versão 13 sp 1.
+--                            Quartus Primer Lite Edition Versão 18.
+--              +revisions    Versão (data): Descrição breve.
+--                            ++ 1.0 (27 Julho 2020): Versão inicial.
+--
+-- @section     AUTHORS & DEVELOPERS.
+--              +institution  UFAM - Universidade Federal do Amazonas.
+--              +courses      Engenharia da Computação / Engenharia Elétrica.
+--              +teacher      Miguel Grimm <miguelgrimm@gmail.com>
+--
+--                            Compilação e Simulação:
+-- 				 +student	  Kevin Guimarães <kevin.guimaraes37@gmail.com> 
+--
+-- @section     LICENSE
+--
+--              GNU General Public License (GNU GPL).
+--
+--              Este programa é um software livre; Você pode redistribuí-lo
+--              e/ou modificá-lo de acordo com os termos do "GNU General Public
+--              License" como publicado pela Free Software Foundation; Seja a
+--              versão 3 da licença, ou qualquer outra versão posterior.
+--
+--              Este programa é distribuído na esperança de que seja útil,
+--              mas SEM QUALQUER GARANTIA; Sem a garantia implícita de
+--              COMERCIALIZAÇÃO OU USO PARA UM DETERMINADO PROPÓSITO.
+--              Veja o site da "GNU General Public License" para mais detalhes.
+--
+-- @htmlonly    http://www.gnu.org/copyleft/gpl.html
+--
+-- @section     REFERENCES.
+--              + CHU, Pong P. RTL Hardware Design Using VHDL. 2006. 669 p.
+--              + AMORE, Robert d'. VHDL - Descrição e Síntese de Circuitos
+--                Digitais. 2. ed. Rio de Janeiro : LTC, 2012. 292 p.
+--              + PEDRONI, Volnei A. Eletrônica Digital Moderna e VHDL.
+--                Rio de Janeiro : Elsevier, 2010. 619 p.
+--              + TOCCI, Ronald J., WIDNER, Neal S. & MOSS, Gregory.
+--                Sistemas Digitais - Princípios e Aplicações, 12. ed.
+--                São Paulo : Person Education do Brasil, 2018. 1034 p.
+--
+-- ############################################################################
+
+library ieee;
+use ieee.numeric_bit.all;
+use work.dsf_std.all;
+
+
+-- ----------------------------------------------------------------------------
+-- @brief      Constantes do tipo bit, bit_vector e integer.
+--
+-- Esta função digital realiza a divisão de frequência por LEN_SCALE_FACTOR. A
+-- forma de onda da saída duty possui o ciclo de trabalho pré-definido em
+-- LEN_DUTY_CYCLE.
+--
+-- @param[in]  enable               -  1, habilita todas as operações da função digital e
+--                                     0, desabilita em caso contrário.
+--
+-- @param[out] integer_constant     -  2**N-1..0, Saída da constante do tipo integer.
+--             
+-- ----------------------------------------------------------------------------
+entity dsf_integer_constant1 is
+
+  port (
+  
+    -- Habilita o funcionamento do dsf_constant.
+    enable               :  in bit;
+	
+    -- Constante do tipo integer.
+	 integer_constant     :  out integer range (2**4 - 1) downto 0  
+	
+  );
+  
+end dsf_integer_constant1;
+
+
+
+architecture dsf_integer_constant_b of dsf_integer_constant1 is
+
+  -- --------------------------------------------------------------------------
+  -- @detail              CONSTANTES GLOBAIS DA ARQUITETURA                  --
+  -- -------------------------------------------------------------------------- 
+  
+  -- Defina o tamanho da constante do tipo integer. 	
+  constant  LEN_INTEGER      :  integer  :=  4;
+  
+  -- Defina o valor da constante do tipo integer.  	
+  constant  LEN_INTEGER_VALUE        :  integer  :=  5; 
+  
+  -- --------------------------------------------------------------------------
+  -- @detail               FUNÇÕES GLOBAIS DA ARQUITETURA                    --
+  -- --------------------------------------------------------------------------
+  
+  function integer_const (enable : bit; LEN_INTEGER_VALUE : integer) return integer is
+
+	variable  integer_value  :  integer range 2**LEN_INTEGER - 1 downto 0;
+
+  begin
+  
+    if (enable = '1') then
+    
+			integer_value := LEN_INTEGER_VALUE;
+			
+	 else
+	 
+	      integer_value := 0;
+			
+	 end if;
+
+    return integer_value;
+
+  end integer_const;
+
+
+begin
+  
+  -- OP1. Recebe o valor da constante do tipo integer.
+  integer_constant <= integer_const(enable, LEN_INTEGER_VALUE);
+
+end dsf_integer_constant_b;
+
+
+

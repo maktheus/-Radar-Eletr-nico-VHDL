@@ -1,0 +1,138 @@
+-- ############################################################################
+-- @copyright   Miguel Grimm <miguelgrimm@gmail>
+--
+-- @brief       Comparador de magnitude.
+--
+-- @file        dsf_compare.vhd
+-- @version     1.0
+-- @date        27 Julho 2020
+--
+-- @section     HARDWARES & SOFTWARES.
+--              +compiler     Quartus Web Edition versão 13 sp 1.
+--                            Quartus Primer Lite Edition Versão 18.
+--              +revisions    Versão (data): Descrição breve.
+--                            ++ 1.0 (27 Julho 2020): Versão inicial.
+--
+-- @section     AUTHORS & DEVELOPERS.
+--              +institution  UFAM - Universidade Federal do Amazonas.
+--              +courses      Engenharia da Computação / Engenharia Elétrica.
+--              +teacher      Miguel Grimm <miguelgrimm@gmail.com>
+--
+--                            Compilação e Simulação:
+-- 				 +student      Kevin Guimarães <kevin.guimaraes37@gmail.com>
+--
+-- @section     LICENSE
+--
+--              GNU General Public License (GNU GPL).
+--
+--              Este programa é um software livre; Você pode redistribuí-lo
+--              e/ou modificá-lo de acordo com os termos do "GNU General Public
+--              License" como publicado pela Free Software Foundation; Seja a
+--              versão 3 da licença, ou qualquer outra versão posterior.
+--
+--              Este programa é distribuído na esperança de que seja útil,
+--              mas SEM QUALQUER GARANTIA; Sem a garantia implícita de
+--              COMERCIALIZAÇÃO OU USO PARA UM DETERMINADO PROPÓSITO.
+--              Veja o site da "GNU General Public License" para mais detalhes.
+--
+-- @htmlonly    http://www.gnu.org/copyleft/gpl.html
+--
+-- @section     REFERENCES.
+--              + CHU, Pong P. RTL Hardware Design Using VHDL. 2006. 669 p.
+--              + AMORE, Robert d'. VHDL - Descrição e Síntese de Circuitos
+--                Digitais. 2. ed. Rio de Janeiro : LTC, 2012. 292 p.
+--              + PEDRONI, Volnei A. Eletrônica Digital Moderna e VHDL.
+--                Rio de Janeiro : Elsevier, 2010. 619 p.
+--              + TOCCI, Ronald J., WIDNER, Neal S. & MOSS, Gregory.
+--                Sistemas Digitais - Princípios e Aplicações, 12. ed.
+--                São Paulo : Person Education do Brasil, 2018. 1034 p.
+--
+-- ############################################################################
+
+library ieee;
+use ieee.numeric_bit.all;
+use work.dsf_std.all;
+
+-- ----------------------------------------------------------------------------
+-- @detail     +ESPECIFICAÇÃO DA INTERFACE.
+--
+-- Esta função digital de compara a magnitude de dois números não sinalizados
+-- para definir as relações aritméticas existente.
+--
+-- @param[in]  enable -  1, habilita as operações da função digital e
+--                       0, desabilita a função digital.
+--
+--             dataa  -  0..15, número não sinalizado a.
+--
+--             datab  -  0..15, número não sinalizado b.
+--
+--             gtin   -  1, se a é maior que b de cascateamento e  
+--                       0, se a não é maior que b.                     
+--
+--             ltin   -  1, se a é menor que b de cascateamento e  
+--                       0, se a não é menor que b.                    
+--
+--             eqin   -  1, se a é igual a b de cascateamento e  
+--                       0, se a não é igual a b.                     
+--
+-- @param[out] gtout  -  1, se o número a é maior que o número b e 
+--                       0, em caso contrário.                               
+--
+--             ltout  -  1, se o número a é maior que o número b e 
+--                       0, em caso contrário.                               
+--
+--             eqout  -  1, se o número a é igual ao número b e 
+--                       0, em caso contrário.                               
+-- ----------------------------------------------------------------------------
+entity dsf_compare is
+
+  port (
+    -- Controle das saídas
+    enable  :  in      bit;
+	
+	-- Dados de entrada na base decimal.
+    dataa   :  in      integer range (2**4 - 1) downto 0;
+    datab   :  in      integer range (2**4 - 1) downto 0;
+	
+	-- Entradas das comparações de cascateamento.
+    gtin    :  in      bit;
+    ltin    :  in      bit;
+    eqin    :  in      bit;
+
+    -- Saídas das comparações de cascateamento.
+    gtout   :  buffer  bit;
+    ltout   :  buffer  bit;
+    eqout   :  buffer  bit
+  );
+
+end dsf_compare;
+
+
+architecture compare_a of dsf_compare is
+
+  -- ----------------------------------------------------------------------------
+  -- @detail     +CONSTANTES GLOBAIS DA ARQUITETURA.
+  -- ----------------------------------------------------------------------------
+  
+  -- ----------------------------------------------------------------------------
+  -- @detail     +BUFFERS LOCAIS DA ARQUITETURA.
+  -- ----------------------------------------------------------------------------
+  
+  -- Buffers do código de cascateamento.
+  signal  glein   :  bit_vector(2 downto 0);
+  signal  gleout  :  bit_vector(2 downto 0);
+
+begin
+
+  -- OP1. Concatenação das entradas e saídas.
+  glein <= gtin & ltin & eqin;
+  gtout <= gleout(2);
+  ltout <= gleout(1);
+  eqout <= gleout(0);
+  
+  -- OP2. Resultado da comparação.
+  gleout <= compare(dataa, datab, glein) when (enable = '1') else
+            (others => '0');
+  -- Obs.: A função compare é definida no pacote dsf_pack.vhd
+
+end compare_a;

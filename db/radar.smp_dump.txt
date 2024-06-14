@@ -1,0 +1,10 @@
+
+State Machine - |radar|rlc_microservice:inst|current
+Name current.noise_s current.error_s current.store_s current.window_s current.reset_s current.wait4start_s current.rst_in_s 
+current.rst_in_s 0 0 0 0 0 0 0 
+current.wait4start_s 0 0 0 0 0 1 1 
+current.reset_s 0 0 0 0 1 0 1 
+current.window_s 0 0 0 1 0 0 1 
+current.store_s 0 0 1 0 0 0 1 
+current.error_s 0 1 0 0 0 0 1 
+current.noise_s 1 0 0 0 0 0 1 
